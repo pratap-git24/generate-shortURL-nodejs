@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>shotId</title>
+</head>
+<body>
+    <p>List of all shortid </p>
+    <table border="1">
+    <thead>
+        <th>ShortId</th>
+        <th>Redirect URL</th>
+        <th>Count</th>
+    </thead>
+    <tbody>
+        <h1>Url Shortner</h1>
+        <% if (locals.id) { %>
+         <p>URL Generated : http:localhost:4002/url/<%= id %></p>
+        <% } %>
+        <div>
+            <form method="post" action="/url">
+                <label>Enter your url-</label>
+                <input type="text" name="url" placeholder="www.example.com">
+                <input type="submit" value="Generate">
+            </form>
+        </div>
+        <% urls.forEach(function(url){ %>
+            <tr>
+                <td>
+                <%= url.shortId %> 
+                </td>
+                <td>
+                    <%= url.redirectUrl %>
+                </td>
+                <td>
+                    <%= url.visitedHistory.length %>
+                </td>
+            </tr>
+            <% }); %>
+    </tbody>
+    </table>
+</body>
+</html>
